@@ -1,0 +1,8 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/backgroundTheme"
+    android:orientation="vertical"
+    android:weightSum="100"
+    tools:context=".AllMembersActivity" >
+
+</LinearLayout>

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.half.circlegroup"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="8"
+        android:targetSdkVersion="18" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name="com.half.circlegroup.LandingActivity"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.half.circlegroup.HomePageActivity"
+            android:label="@string/title_activity_home_page" >
+        </activity>
+        <activity
+            android:name="com.half.circlegroup.ProfileActivity"
+            android:label="@string/title_activity_profile" >
+        </activity>
+        <activity
+            android:name="com.half.circlegroup.AllMembersActivity"
+            android:label="@string/title_activity_all_members" >
+        </activity>
+        <activity
+            android:name="com.half.circlegroup.DepartMentsActivity"
+            android:label="@string/title_activity_depart_ments" >
+        </activity>
+        <activity
+            android:name="com.half.circlegroup.TeamsActivity"
+            android:label="@string/title_activity_teams" >
+        </activity>
+        <activity
+            android:name="com.half.circlegroup.MemberListActivity"
+            android:label="@string/title_activity_member_list" >
+        </activity>
+        <activity
+            android:name="com.half.circlegroup.MediasActivity"
+            android:label="@string/title_activity_medias" >
+        </activity>
+        <activity
+            android:name="com.half.circlegroup.MembersGroupActivity"
+            android:label="@string/title_activity_members_grpip" >
+        </activity>
+    </application>
+
+</manifest>

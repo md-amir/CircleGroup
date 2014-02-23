@@ -1,0 +1,53 @@
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!--
+        Base application theme, dependent on API level. This theme is replaced
+        by AppBaseTheme from res/values-vXX/styles.xml on newer devices.
+    -->
+    <style name="AppBaseTheme" parent="android:Theme.Light">
+       
+    </style>
+
+    <!-- Application theme. -->
+    <style name="AppTheme" parent="AppBaseTheme">
+        <!-- All customizations that are NOT specific to a particular API-level can go here. -->
+         <item name="android:windowNoTitle">true</item>
+    </style>
+    <style name="backgroundTheme">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:background">@drawable/bg</item>
+        <item name="android:focusable">true</item>
+        <item name="android:focusableInTouchMode">true</item>
+    </style>
+    <!-- default text view's styling --> 
+    <style name="textViewDefault" parent="@android:style/TextAppearance">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/text_color_white</item>
+        <item name="android:text">@string/test_string</item>
+        <item name="android:padding">@dimen/default_text_padding</item>
+        <item name="android:textSize">@dimen/default_text_size</item>
+    </style>
+    <style name="defaultEditextStyle" >
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:hint">""</item>
+        <item name="android:padding">@dimen/default_text_padding</item>
+        <item name="android:textColorHint">@color/gray</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textSize">@dimen/default_text_size</item>
+    </style>
+    
+    <!-- heading style -->
+    <style name="headerStyle">
+        <item name="android:background">@drawable/header</item>
+    </style>
+    <style name="defaultButtonStyle">
+        <!-- <item name="android:background">@drawable/header</item> -->
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/text_color_white</item>
+    </style>
+
+</resources>
