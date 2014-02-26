@@ -2,11 +2,12 @@ package com.half.circlegroup;
 
 import java.util.ArrayList;
 
-import com.half.adapter.CustomAdapter;
+import com.half.adapter.UserAdapter;
 import com.half.domain.User;
 
 import android.os.Bundle;
 import android.app.Activity;
+import android.content.Context;
 import android.content.res.Resources;
 import android.view.Menu;
 import android.widget.ListView;
@@ -14,24 +15,24 @@ import android.widget.Toast;
 
 public class MemberListActivity extends Activity {
 
-	 public  MemberListActivity CustomListView = null;
-	 public  ArrayList<User> CustomListViewValuesArr = new ArrayList<User>();
+	 public  Context context = null;
+	 public  ArrayList<User> userList = new ArrayList<User>();
 	 ListView list;
-     CustomAdapter adapter;
+     UserAdapter adapter;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_member_list);
-		CustomListView = this;
+		context = this;
 		
 		/******** Take some data in Arraylist ( CustomListViewValuesArr ) ***********/
         setListData();
          
-        Resources res =getResources();
-        list= ( ListView )findViewById( R.id.list );  // List defined in XML ( See Below )
+        Resources resources =getResources();
+        list= ( ListView )findViewById( R.id.list );  // List defined in XML 
          
         /**************** Create Custom Adapter *********/
-        adapter=new CustomAdapter( CustomListView, CustomListViewValuesArr,res );
+        adapter=new UserAdapter( this, userList,resources );
         list.setAdapter( adapter );
 	}
 
@@ -49,7 +50,7 @@ public class MemberListActivity extends Activity {
                sched.setUrl("http:\\www."+i+".com");
                 
             /******** Take Model Object in ArrayList **********/
-            CustomListViewValuesArr.add( sched );
+            userList.add( sched );
         }
          
     }
@@ -58,12 +59,12 @@ public class MemberListActivity extends Activity {
 	/***************** This function used by adapter ****************/
 	public void onItemClick(int mPosition)
     {
-        User tempValues = ( User ) CustomListViewValuesArr.get(mPosition);
+        User tempValues = ( User ) userList.get(mPosition);
 
 
        // SHOW ALERT                  
 
-        Toast.makeText(CustomListView, ""+tempValues.getName() +" Image:"+tempValues.getImage()+" Url:"+tempValues.getUrl(), Toast.LENGTH_LONG)
+        Toast.makeText(context, ""+tempValues.getName() +" Image:"+tempValues.getImage()+" Url:"+tempValues.getUrl(), Toast.LENGTH_LONG)
         .show();
     }
 }
