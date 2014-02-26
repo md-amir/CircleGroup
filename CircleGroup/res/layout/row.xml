@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="60dp"
+    android:background="@drawable/list_background" >
+
+    <RelativeLayout
+        android:id="@+id/rlContainer"
+        android:layout_width="wrap_content"
+        android:layout_height="60dp"
+        android:layout_toLeftOf="@+id/imgRightArrow" >
+
+        <ImageView
+            android:id="@+id/imgProfilePic"
+            android:layout_width="58dp"
+            android:layout_height="fill_parent"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/project_icon" />
+
+        <TextView
+            android:id="@+id/txtName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="8dp"
+            android:layout_toRightOf="@+id/imgProfilePic"
+            android:text="Amir Hossain"
+            android:textColor="#FFFFFF" />
+
+        <TextView
+            android:id="@+id/txtMobileNumber"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/txtName"
+            android:layout_alignParentBottom="true"
+            android:paddingBottom="12dp"
+            android:singleLine="true"
+            android:textColor="#FFFFFF"
+            android:text="01718738124" />
+
+        <TextView
+            android:id="@+id/txtIssueDate"
+            style="@style/textViewDefault"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginBottom="8dp"
+            android:layout_marginRight="5dp"
+            android:text="02-03-13"
+            android:visibility="invisible" />
+    </RelativeLayout>
+        
+    <ImageView
+        android:id="@+id/imgRightArrow"
+        android:layout_width="wrap_content"
+        android:layout_height="fill_parent"
+        android:layout_alignParentRight="true"
+        android:src="@drawable/accessory_right" />
+        
+</RelativeLayout>
