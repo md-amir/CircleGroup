@@ -45,7 +45,7 @@ public final class R {
         public static final int shape_rectangle_with_one_px_border=0x7f02000e;
     }
     public static final class id {
-        public static final int action_settings=0x7f09002b;
+        public static final int action_settings=0x7f09002c;
         public static final int btnAlertAndSchedule=0x7f09000b;
         public static final int btnCora=0x7f090015;
         public static final int btnD1=0x7f090002;
@@ -66,8 +66,9 @@ public final class R {
         public static final int btnT3=0x7f090022;
         public static final int btnT4=0x7f090023;
         public static final int edtId=0x7f090010;
-        public static final int imgProfilePic=0x7f090027;
-        public static final int imgRightArrow=0x7f090026;
+        public static final int eeeeeee=0x7f090025;
+        public static final int imgProfilePic=0x7f090028;
+        public static final int imgRightArrow=0x7f090027;
         public static final int info=0x7f090007;
         public static final int list=0x7f090014;
         public static final int lnBlank=0x7f09000e;
@@ -83,12 +84,12 @@ public final class R {
         public static final int lnMemberHeader=0x7f090012;
         public static final int lnSmsAndCall=0x7f09001e;
         public static final int lnTeamHeader=0x7f09001f;
-        public static final int rlContainer=0x7f090025;
+        public static final int rlContainer=0x7f090026;
         public static final int txtHeading1=0x7f090024;
         public static final int txtId=0x7f09000f;
-        public static final int txtIssueDate=0x7f09002a;
-        public static final int txtMobileNumber=0x7f090029;
-        public static final int txtName=0x7f090028;
+        public static final int txtIssueDate=0x7f09002b;
+        public static final int txtMobileNumber=0x7f09002a;
+        public static final int txtName=0x7f090029;
     }
     public static final class layout {
         public static final int activity_depart_ments=0x7f030000;
