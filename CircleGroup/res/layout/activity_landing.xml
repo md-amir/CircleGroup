@@ -13,7 +13,7 @@
         android:layout_weight="10"
         android:orientation="horizontal" >
 
-         <include layout="@layout/header"/>
+        <include layout="@layout/header" />
     </LinearLayout>
 
     <LinearLayout
@@ -24,13 +24,12 @@
         android:orientation="vertical"
         android:weightSum="100" >
 
-        <LinearLayout 
-            android:id="@+id/lnBlank" 
+        <LinearLayout
+            android:id="@+id/lnBlank"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="50"
-            android:orientation="horizontal">
-        
+            android:orientation="horizontal" >
         </LinearLayout>
 
         <TextView
@@ -43,23 +42,24 @@
             android:textSize="22sp" />
 
         <EditText
-            style="@style/defaultEditextStyle"
             android:id="@+id/edtId"
+            style="@style/defaultEditextStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Your ID here"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
-            android:ems="10" />
-            
-            <Button 
-              android:id="@+id/btnLogin"
-              android:layout_width="match_parent"
-              android:layout_height="wrap_content"
-              android:layout_gravity="center_vertical" 
-              android:layout_margin="20dp"
-              android:text="Enter"   />
-      
+            android:ems="10"
+            android:hint="Your ID here" />
+
+        <Button
+            android:id="@+id/btnLogin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_margin="20dp"
+            android:text="Enter" />
     </LinearLayout>
+
+    
 
 </LinearLayout>

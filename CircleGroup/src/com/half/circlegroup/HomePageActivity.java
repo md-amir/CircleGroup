@@ -10,7 +10,7 @@ import android.widget.Button;
 
 public class HomePageActivity extends Activity implements OnClickListener {
 
-	private Button btnMember;
+	private Button btnOnganizations;
 	private Button btnMedias;
 	private Button btnInvite;
 	private Button btnAlertAndSchedule;
@@ -26,8 +26,8 @@ public class HomePageActivity extends Activity implements OnClickListener {
 
 	private void initialControls() {
 
-		btnMember = (Button) findViewById(R.id.btnMembers);
-		btnMember.setOnClickListener(this);
+		btnOnganizations = (Button) findViewById(R.id.btnOnganizations);
+		btnOnganizations.setOnClickListener(this);
 		btnMedias = (Button) findViewById(R.id.btnMedia);
 		btnMedias.setOnClickListener(this);
 		btnInvite = (Button) findViewById(R.id.btnInvite);
@@ -40,8 +40,8 @@ public class HomePageActivity extends Activity implements OnClickListener {
 	@Override
 	public void onClick(View view) {
 		switch (view.getId()) {
-		case R.id.btnMembers: {
-            intent = new Intent(context, MembersGroupActivity.class);
+		case R.id.btnOnganizations: {
+            intent = new Intent(context, OrganizationsActivity.class);
             startActivity(intent);
 			break;
 		}
