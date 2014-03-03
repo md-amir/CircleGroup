@@ -41,7 +41,7 @@
     
     <!-- heading style -->
     <style name="headerStyle">
-        <item name="android:background">@drawable/header</item>
+        <item name="android:background">@drawable/header2</item>
     </style>
     <style name="defaultButtonStyle">
         <!-- <item name="android:background">@drawable/header</item> -->

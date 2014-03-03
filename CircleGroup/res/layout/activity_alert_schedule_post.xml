@@ -1,0 +1,86 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/backgroundTheme"
+    android:orientation="vertical"
+    android:weightSum="100"
+    tools:context=".AlertSchedulePostActivity" >
+
+    <LinearLayout
+        android:id="@+id/lnTeamHeader"
+        style="@style/headerStyle"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="10"
+        android:orientation="horizontal" >
+
+        <include layout="@layout/header" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/lnAlertScheduleShowDetails"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="90"
+        android:orientation="vertical" 
+        android:weightSum="100">
+
+        <LinearLayout
+            android:id="@+id/lnAlertScheduleSubjectPost"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_margin="5dp"
+            android:background="@color/red_light_2"
+            android:orientation="horizontal" 
+            >
+
+            <EditText
+                android:id="@+id/etAlertSchedulesSubject"
+                android:layout_width="fill_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:ems="10"
+                android:hint="Subject"
+                android:textColor="#FFFFFF"
+                android:textColorHint="#FFFFFF" >
+
+                <requestFocus />
+            </EditText>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/details"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:background="@color/white"
+            android:orientation="vertical" 
+            android:layout_weight="80">
+
+            <EditText
+                android:id="@+id/etAlertScheduleMessage"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Your Details here ..."
+                android:inputType="textMultiLine"
+                android:textColor="#000000"
+                android:textColorHint="#FFFFFF" >
+
+                <requestFocus />
+            </EditText>
+        </LinearLayout>
+        <Button 
+            android:id="@+id/btnPost"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_marginTop="20dp"
+            android:text="Post"
+            android:layout_gravity="center_horizontal"
+            android:textColor="#FFFFFF"/>
+    </LinearLayout>
+
+</LinearLayout>

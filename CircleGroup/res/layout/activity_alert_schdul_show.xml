@@ -1,0 +1,58 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/backgroundTheme"
+    android:orientation="vertical"
+    android:weightSum="100"
+    tools:context=".AlertSchdulShowActivity" >
+
+    <LinearLayout
+        android:id="@+id/lnTeamHeader"
+        style="@style/headerStyle"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="10"
+        android:orientation="horizontal" >
+
+        <include layout="@layout/header" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/lnAlertScheduleShowDetails"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="90"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/txtAlertSchedulFrom"
+            style="@style/textViewDefault"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="From: Maruf"
+            android:textSize="20sp"
+            android:layout_marginTop="10dp" />
+        <TextView
+            android:id="@+id/txtAlertSchedulSubjectShow"
+            style="@style/textViewDefault"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Happy moment"
+            android:textSize="20sp"
+            android:layout_marginTop="10dp" />
+
+        <TextView
+            android:id="@+id/txtAlertSchedulDetails"
+            style="@style/textViewDefault"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="15dp"
+            android:gravity="left"
+            android:text="A brown fox jumped over the lazy sleeping dog.A brown fox jumped over the lazy sleeping dog.A brown fox jumped over the lazy sleeping dog.A brown fox jumped over the lazy sleeping dog."
+            android:textSize="16sp" />
+    </LinearLayout>
+
+</LinearLayout>

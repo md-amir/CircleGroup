@@ -1,15 +1,16 @@
 package com.half.adapter;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.ArrayList;
-
-import com.half.circlegroup.MemberListActivity;
-import com.half.circlegroup.R;
-import com.half.domain.User;
-
 
 import android.app.Activity;
 import android.content.Context;
 import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,6 +19,10 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.half.circlegroup.MemberListActivity;
+import com.half.circlegroup.R;
+import com.half.domain.User;
 
 /********* Adapter class extends with BaseAdapter and implements with OnClickListener ************/
 public class UserAdapter extends BaseAdapter   implements OnClickListener {
@@ -64,6 +69,7 @@ public class UserAdapter extends BaseAdapter   implements OnClickListener {
               
              public TextView txtName;
              public TextView txtMobileNumber;
+             public TextView txtDesignation;
              public TextView textWide;
              public ImageView imgProfilePic;
       
@@ -85,6 +91,7 @@ public class UserAdapter extends BaseAdapter   implements OnClickListener {
                  holder = new ViewHolder();
                  holder.txtName = (TextView) vi.findViewById(R.id.txtName);
                  holder.txtMobileNumber=(TextView)vi.findViewById(R.id.txtMobileNumber);
+//                 holder.txtDesignation=(TextView)vi.findViewById(R.id.txtd);
                  holder.imgProfilePic=(ImageView)vi.findViewById(R.id.imgProfilePic);
                   
                 /************  Set holder with LayoutInflater ************/
@@ -102,15 +109,25 @@ public class UserAdapter extends BaseAdapter   implements OnClickListener {
              {
                  /***** Get each Model object from Arraylist ********/
                  temUser=null;
-                 temUser = ( User ) userList.get( position );
+                 temUser = ( User ) userList.get( position ); 
                   
                  /************  Set Model values in Holder elements ***********/
  
                   holder.txtName.setText( temUser.getName());
-                  holder.txtMobileNumber.setText( temUser.getUrl() );
-                   holder.imgProfilePic.setImageResource( res.getIdentifier( "com.half.adapter:drawable/"+temUser.getImage(),null,null));
-                   
-                  /******** Set Item Click Listner for LayoutInflater for each row *******/
+                  holder.txtMobileNumber.setText( temUser.getMobileNumber() );
+//                holder.txtDesignation.setText( temUser.getDegignation() );
+//                  holder.imgProfilePic.setImageResource( res.getIdentifier( "com.half.adapter:drawable/"+temUser.getImage(),null,null));
+                  
+//                  try {
+//                	  
+//                	  Bitmap bitmap = BitmapFactory.decodeStream((InputStream)new URL("https://www.facebook.com/photo.php?fbid=1132819179145&set=a.1280951842369.36264.1787275162&type=1&theater").getContent());
+//                	  holder.imgProfilePic.setImageBitmap(bitmap); 
+//                	} catch (MalformedURLException e) {
+//                	  e.printStackTrace();
+//                	} catch (IOException e) {
+//                	  e.printStackTrace();
+//                	}
+//                    /******** Set Item Click Listner for LayoutInflater for each row *******/
  
                   vi.setOnClickListener(new OnItemClickListener( position ));
              }

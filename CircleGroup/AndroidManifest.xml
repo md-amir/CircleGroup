@@ -7,6 +7,7 @@
     <uses-sdk
         android:minSdkVersion="8"
         android:targetSdkVersion="18" />
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -27,7 +28,7 @@
             android:label="@string/title_activity_home_page" >
         </activity>
         <activity
-            android:name="com.half.circlegroup.ProfileActivity"
+            android:name="com.half.circlegroup.ProfilePageActivity"
             android:label="@string/title_activity_profile" >
         </activity>
         <activity
@@ -39,7 +40,7 @@
             android:label="@string/title_activity_depart_ments" >
         </activity>
         <activity
-            android:name="com.half.circlegroup.TeamsActivity"
+            android:name="com.half.circlegroup.LosTeamsActivity"
             android:label="@string/title_activity_teams" >
         </activity>
         <activity
@@ -53,6 +54,22 @@
         <activity
             android:name="com.half.circlegroup.OrganizationsActivity"
             android:label="@string/title_activity_members_grpip" >
+        </activity>
+        <activity
+            android:name="com.half.circlegroup.AlertScheduleActivity"
+            android:label="@string/title_activity_alert_schedule" >
+        </activity>
+        <activity
+            android:name="com.half.circlegroup.AlertSchdulShowActivity"
+            android:label="@string/title_activity_alert_schdul_show" >
+        </activity>
+        <activity
+            android:name="com.half.circlegroup.AlertSchedulePostActivity"
+            android:label="@string/title_activity_alert_schedule_post" >
+        </activity>
+        <activity
+            android:name="com.half.circlegroup.VanueActivity"
+            android:label="@string/title_activity_vanue" >
         </activity>
     </application>
 

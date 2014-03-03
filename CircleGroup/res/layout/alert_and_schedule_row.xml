@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="40dp"
+    android:orientation="vertical" >
+    <LinearLayout 
+        android:id="@+id/lnAlertAndSchduleRow"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="@drawable/list_background"
+        android:orientation="horizontal"
+        android:weightSum="100"
+        >
+        <ImageView 
+            android:id="@+id/imgAlertOrScheduleSign"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_width="0dp"
+            android:layout_weight="10"
+            android:contentDescription="green or orange dot"
+            android:layout_margin="5dp"
+            android:src="@drawable/green_circle"/>
+        <TextView 
+            style="@style/textViewDefault"
+            android:id="@+id/txtAlertAndSchedulesSubject"
+            android:layout_height="wrap_content"
+            android:layout_width="0dp"
+            android:layout_weight="80"
+            android:layout_gravity="center_vertical"
+            android:text="Alert and Schedule  Subject 1"
+            android:textColor="#FFFFFF"
+            />
+        <ImageView 
+            
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_width="0dp"
+            android:layout_weight="10"
+            android:contentDescription="green or orange dot"
+            android:layout_margin="5dp"
+            android:src="@drawable/accessory_right"/>
+        
+        
+    </LinearLayout>
+    
+
+
+
+</LinearLayout>

@@ -1,0 +1,75 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/backgroundTheme"
+    android:orientation="vertical"
+    android:weightSum="100"
+    tools:context=".LosTeamsActivity" >
+
+    <LinearLayout
+        android:id="@+id/lnTeamHeader"
+        style="@style/headerStyle"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="10"
+        android:orientation="horizontal" >
+
+        <include layout="@layout/header" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/lnButtonContainer"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="90"
+        android:orientation="vertical"
+        android:weightSum="100" >
+        
+        <LinearLayout 
+            android:id="@+id/lnBl"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="30"
+            android:orientation="horizontal" />
+
+        <Button
+            android:id="@+id/btnGreen"
+            style="@style/defaultButtonStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="30dp"
+            android:text="GREEN" />
+
+        <Button
+            android:id="@+id/btnRed"
+            style="@style/defaultButtonStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="5dp"
+            android:text="RED" />
+
+        <Button
+            android:id="@+id/btnYellow"
+            style="@style/defaultButtonStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="5dp"
+            android:text="YELLOW" />
+
+        <Button
+            android:id="@+id/btnOrange"
+            style="@style/defaultButtonStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="5dp"
+            android:text="ORANGE" />
+    </LinearLayout>
+
+</LinearLayout>

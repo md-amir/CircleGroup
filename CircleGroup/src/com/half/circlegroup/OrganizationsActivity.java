@@ -1,5 +1,8 @@
 package com.half.circlegroup;
 
+import com.half.util.AppConstant;
+import com.half.util.Keys;
+
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -41,37 +44,47 @@ public class OrganizationsActivity extends Activity implements OnClickListener{
 		btnSecurityMembers = (Button) findViewById(R.id.btnSecurityMembers);
 		btnSecurityMembers.setOnClickListener(this);
 		context = this;
+		intent = new Intent(context,MemberListActivity.class);
 	}
+	
 	@Override
 	public void onClick(View v) {
 		switch (v.getId()) {
 		case R.id.btnCora:
-		{
-			intent = new Intent(context,MemberListActivity.class);
-			startActivity(intent);
+		{			
+			intent.putExtra(Keys.ORGANIZATION_CORA_KEY, AppConstant.ORGANIZATION_CORA_VALUE);
 			break;
 		}
-		case 1:
+		case R.id.btnFinance:
 		{
-			intent = new Intent(context,DepartMentsActivity.class);
-			startActivity(intent);
+			intent.putExtra(Keys.ORGANIZATION_FINANCE_KEY, AppConstant.ORGANIZATION_FINANCE_VALUE);
 			break;
 		}
-		case 2:
+		case R.id.btnHr:
 		{
-			intent = new Intent(context,TeamsActivity.class);
-			startActivity(intent);
+			intent.putExtra(Keys.ORGANIZATION_HR_KEY, AppConstant.ORGANIZATION_HR_VALUE);
 			break;
 		}
-		case 3:
+		
+		case R.id.btnIt:
 		{
-//			intent = new Intent(context,AllMembersActivity.class);
-//			startActivity(intent);
+			intent.putExtra(Keys.ORGANIZATION_IT_KEY, AppConstant.ORGANIZATION_IT_VALUE);
+			break;
+		}
+		case R.id.btnSecurityMembers:
+		{
+			intent.putExtra(Keys.ORGANIZATION_SECURITY_KEY, AppConstant.ORGANIZATION_SECURITY_VALUE);
+			break;
+		}
+		case R.id.btnLegal:
+		{
+			intent.putExtra(Keys.ORGANIZATION_LEGAL_KEY, AppConstant.ORGANIZATION_LEGAL_VALUE);
 			break;
 		}
 		default:
 			break;
 		}
+		startActivity(intent);
 		
 	}
 

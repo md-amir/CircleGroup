@@ -29,7 +29,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="50"
+            android:layout_weight="20"
             android:orientation="horizontal" >
 
             <LinearLayout
@@ -41,7 +41,7 @@
                 <ImageView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginTop="5dp"
                     android:layout_weight="30"
                     android:src="@drawable/amir" />
 
@@ -57,7 +57,7 @@
                         style="@style/textViewDefault"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="12dp"
+                        android:layout_marginTop="5dp"
                         android:padding="3dp"
                         android:text="Md Amir Hossain"
                         android:textSize="16sp" />
@@ -81,45 +81,106 @@
             </LinearLayout>
         </LinearLayout>
 
-        <Button
-            android:id="@+id/btnOnganizations"
-            style="@style/defaultButtonStyle"
+        <LinearLayout
+            android:id="@+id/buttonsContainer"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:layout_marginTop="30dp"
-            android:text="Organizaton" />
+            android:layout_height="0dp"
+            android:layout_weight="80"
+            android:orientation="vertical" >
 
-        <Button
-            android:id="@+id/btnMedia"
-            style="@style/defaultButtonStyle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:layout_marginTop="5dp"
-            android:text="Media" />
+            <Button
+                android:id="@+id/btnOnganizations"
+                style="@style/defaultButtonStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="10dp"
+                android:text="Organizaton" />
 
-        <Button
-            android:id="@+id/btnInvite"
-            style="@style/defaultButtonStyle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:layout_marginTop="5dp"
-            android:text="Invite" />
+            <Button
+                android:id="@+id/btnSchedule"
+                style="@style/defaultButtonStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="5dp"
+                android:text="Schedules" />
 
-        <Button
-            android:id="@+id/btnAlertAndSchedule"
-            style="@style/defaultButtonStyle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:layout_marginTop="5dp"
-            android:text="Schedules" />
+            <Button
+                android:id="@+id/btnLosTeam"
+                style="@style/defaultButtonStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="5dp"
+                android:text="LOS Teams" />
+
+            <Button
+                android:id="@+id/btnInvite"
+                style="@style/defaultButtonStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="5dp"
+                android:text="Invitations" />
+
+            <Button
+                android:id="@+id/btnVenue"
+                style="@style/defaultButtonStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="5dp"
+                android:text="Venue" />
+
+            <LinearLayout
+                android:id="@+id/lnBottomBtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:orientation="horizontal"
+                android:weightSum="30" >
+
+                <Button
+                    android:id="@+id/btnMedia"
+                    style="@style/defaultButtonStyle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="0dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_weight="10"
+                    android:text="Media" />
+
+                <Button
+                    android:id="@+id/btnAlert"
+                    style="@style/defaultButtonStyle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_weight="10"
+                    android:text="Alerts" />
+
+                <Button
+                    android:id="@+id/btnSos"
+                    style="@style/defaultButtonStyle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="0dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_weight="10"
+                    android:text="SOS" />
+            </LinearLayout>
+        </LinearLayout>
     </LinearLayout>
 
 </LinearLayout>

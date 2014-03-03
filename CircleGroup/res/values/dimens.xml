@@ -7,6 +7,10 @@
     <dimen name="default_text_size">12sp</dimen>
     <dimen name="default_text_padding">10dp</dimen>
     <color name="gray">#999999</color>
+    <color name="red_light_1">#780000 </color>
+    <color name="red_light_2">#300000  </color>
+    <color name="black_light">#180000</color>
+    <color name="white">#FFFFFF</color>
     
 
 </resources>
