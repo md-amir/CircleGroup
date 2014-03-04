@@ -1,14 +1,20 @@
 package com.half.circlegroup;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.telephony.PhoneStateListener;
+import android.telephony.TelephonyManager;
+import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.TextView;
 
 import com.half.domain.User;
 
-public class ProfilePageActivity extends Activity {
+public class ProfilePageActivity extends Activity implements OnClickListener {
 	
 	private Button btnSms;
 	private Button btnCall;
@@ -20,6 +26,7 @@ public class ProfilePageActivity extends Activity {
 	private TextView txtRoomNumber;
 	private TextView txtTeamName;
 	private TextView txtBusNumber;
+	private User user;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -40,13 +47,20 @@ public class ProfilePageActivity extends Activity {
 		txtTeamName = (TextView) findViewById(R.id.txtTeamName);
 		txtBusNumber = (TextView) findViewById(R.id.txtBusNumber);
 		
+		btnCall =  (Button) findViewById(R.id.btnCall);
+		btnCall.setOnClickListener(this);
+		btnSms =  (Button) findViewById(R.id.btnSms);
+		btnSms.setOnClickListener(this);
+		btnPhoto =  (Button) findViewById(R.id.btnPhoto);
+		btnPhoto.setOnClickListener(this);
+		
 	}
 	
 	private void setvalue() {
 //		Bundle data = getIntent().getExtras();
 //		User user = (User) data.getParcelable("user");
 		
-		User user = (User)getIntent().getParcelableExtra("user");
+		user = (User)getIntent().getParcelableExtra("user");
 		
 		txtUserName.setText(user.getName());
 		txtUserDesignation.setText(user.getDegignation());
@@ -54,6 +68,13 @@ public class ProfilePageActivity extends Activity {
 		txtRoomNumber.setText("Room Number: "+user.getRoomNumber());
 		txtBusNumber.setText("Bus Number: "+user.getBusNumber());
 		txtTeamName.setText("Team Name: "+user.getTeamName());
+		
+		
+		// add PhoneStateListener
+//				PhoneCallListener phoneListener = new PhoneCallListener();
+//				TelephonyManager telephonyManager = (TelephonyManager) this
+//					.getSystemService(Context.TELEPHONY_SERVICE);
+//				telephonyManager.listen(phoneListener,PhoneStateListener.LISTEN_CALL_STATE);
 		
 	}
 
@@ -65,6 +86,33 @@ public class ProfilePageActivity extends Activity {
 		if(resultCode == RESULT_OK )
 		{
 			
+		}
+		
+	}
+
+
+
+	@Override
+	public void onClick(View v) {
+		switch (v.getId()) {
+		case R.id.btnCall:
+		{
+			Intent callIntent = new Intent(Intent.ACTION_CALL);
+			callIntent.setData(Uri.parse("tel:"+user.getMobileNumber()));
+			startActivity(callIntent);
+			
+			break;
+		}
+		case R.id.btnSms:
+		{
+			break;
+		}
+		case R.id.btnPhoto:
+		{
+			break;
+		}
+		default:
+			break;
 		}
 		
 	}
