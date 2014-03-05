@@ -1,6 +1,9 @@
 package com.half.circlegroup;
 
+import java.util.ArrayList;
 import java.util.Hashtable;
+
+import org.json.JSONObject;
 
 import android.app.Activity;
 import android.content.Context;
@@ -19,6 +22,7 @@ import com.half.util.Response;
 import com.half.util.ServerResponseListener;
 import com.half.util.Serverconnector;
 
+
 public class HomePageActivity extends Activity implements OnClickListener,ServerResponseListener {
 
 	private Button btnOnganizations;
@@ -33,15 +37,18 @@ public class HomePageActivity extends Activity implements OnClickListener,Server
 	private Intent intent;
 	private Context context;
 	
-	String SERVER_ADDRESS_CAMERA_TRAP = "http://marufnafi.byethost4.com/batemplist.php?";
-	private final int CAMERA_TRAP_CALL = 200;
+	String SERVER_ADDRESS_FOR_ALL_MEMBERS = "http://marufnafi.byethost4.com/batemplist.php?";
+	private final int ALL_MEMBER_CALL = 200;
 
+	private ArrayList<User> allUserList;
+	
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_home_page);
 		initialControls();
-		serverRequestCamera();
+		serverReqestForAllMembers();
 	}
 
 	private void initialControls() {
@@ -63,6 +70,9 @@ public class HomePageActivity extends Activity implements OnClickListener,Server
 		btnSos = (Button) findViewById(R.id.btnSos);
 		btnSos.setOnClickListener(this);
 		context = this;
+		
+		allUserList = new ArrayList<User>();
+	
 		
 		User own = new User();
 		own.setName("Wahid");
@@ -134,15 +144,13 @@ public class HomePageActivity extends Activity implements OnClickListener,Server
 
 	}
 
-	 private void serverRequestCamera()
+	 private void serverReqestForAllMembers()
 	 {
       Hashtable<String, String> paramList = new Hashtable<String, String>();
 	 
 	  paramList.put("version", "");
-	  paramList.put("imei", "");
-	  paramList.put("enc", "" );
 	  
-	  new Serverconnector(this, this, SERVER_ADDRESS_CAMERA_TRAP, paramList, CAMERA_TRAP_CALL, Serverconnector.HTTP_STRING).start();
+	  new Serverconnector(this, this, SERVER_ADDRESS_FOR_ALL_MEMBERS, paramList, ALL_MEMBER_CALL, Serverconnector.HTTP_STRING).start();
 	 }
 	
 	
@@ -151,6 +159,28 @@ public class HomePageActivity extends Activity implements OnClickListener,Server
 		String data = (String) response.getData();
 		System.out.println("Road Response: " + data);
 		Log.v("","response"+data);
+		
+		if(response.getRequetType() == ALL_MEMBER_CALL)
+		{
+			if(response.getStatus())
+			{
+				try
+				{
+					allUserList = User.parse(response.getData().toString());
+					InitialInfo.setMemberList(allUserList);
+					
+				}
+				catch (Exception e)
+				{
+					e.printStackTrace();
+					
+				}
+			}
+			else
+			{
+			
+			}
+		}
 		
 	}
 

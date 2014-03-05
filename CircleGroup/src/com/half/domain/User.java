@@ -1,8 +1,14 @@
 package com.half.domain;
 
+import java.util.ArrayList;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
+
 import android.graphics.Bitmap;
 import android.os.Parcel;
 import android.os.Parcelable;
+import android.util.Log;
 
 public class User implements Parcelable {
 
@@ -20,9 +26,11 @@ public class User implements Parcelable {
 	private String losTeamName;
 	private String organization;
 	private boolean isAdmin;
-
 	private String url;
-
+	
+	private static JSONArray jObjarray;
+	private static ArrayList<User> allUserList;
+	
 	private User(Parcel in) {
 		this.name = in.readString();
 		this.degignation = in.readString();
@@ -203,5 +211,57 @@ public class User implements Parcelable {
 //		this.url = in.readString();
 
 	}
+	
+	public static ArrayList<User> parse(String data)
+	{
+		allUserList = new ArrayList<User>();
+	
+		
+		try 
+		{
+			jObjarray = new JSONArray(data);
+			Log.v("size","length"+jObjarray.length());
+			
+			
+			for(int i=0; i<jObjarray.length();i++){
+				
+			JSONObject jObj = jObjarray.getJSONObject(i);
+			
+			User temp = new User();
+			temp.setName(jObj.getString("emp_name"));
+			temp.setAdmin(Integer.parseInt(jObj.getString("emp_admin"))==1);
+			temp.setBusNumber(jObj.getString("emp_bus"));
+			temp.setDegignation(jObj.getString("emp_designation"));
+			temp.setMobileNumber(jObj.getString("emp_mobile"));
+//			temp.setEmail(jObj.getString("emp_name"));
+			temp.setLosTeamName(jObj.getString("emp_team"));
+			temp.setOrganization(jObj.getString("emp_department"));
+			temp.setRoomNumber(jObj.getString("emp_room"));
+			temp.setTeamName(jObj.getString("emp_name"));
+			temp.setUniqueNumber(jObj.getString("emp_code"));
+			temp.setUrl(jObj.getString("emp_picture"));
+			//emp_id
+			allUserList.add(temp);
+			
+			}
+			
+//			JSONObject result = new JSONObject(data).getJSONObject("result");
+//			
+//		    allUserList = new ArrayList<User>();
+//			user.setEmail(result.getJSONObject("signInUser").getString("uuid"));
+//			user.setName(result.getJSONObject("signInUser").getString("name"));
+//			user.setPassword(result.getJSONObject("signInUser").getString("password"));
+//			user.setMiddleName(result.getJSONObject("signInUser").getString("middle_name") == null ? "" : result.getJSONObject("signInUser").getString("middle_name"));
+//			
+			return  allUserList;
+			// Parse rest of them
+		}
+		catch (Exception e){
+			
+		}
+		return null;
+	}
+	
+	
 
 }

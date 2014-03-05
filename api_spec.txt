@@ -1,0 +1,11 @@
+schedule add api
+http://marufnafi.byethost4.com/batscheduleadd.php
+
+schedule add post field name will be
+schedule_title, schedule_description, schedule_starttime, schedule_endtime, schedule_venue
+
+schedule list view api
+http://marufnafi.byethost4.com/batschedulelist.php
+
+employee list view api
+http://marufnafi.byethost4.com/batemplist.php

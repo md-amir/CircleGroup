@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import com.half.adapter.UserAdapter;
 import com.half.domain.User;
+import com.half.util.InitialInfo;
 
 import android.os.Bundle;
 import android.os.Parcelable;
@@ -43,26 +44,28 @@ public class MemberListActivity extends Activity {
 	/****** Function to set data in ArrayList *************/
     public void setListData()
     {
+    	
+    	userList = InitialInfo.getMemberList();
          
-        for (int i = 0; i < 11; i++) {
+//        for (int i = 0; i < 11; i++) {
              
-            final User user = new User();
-                 
-              /******* Firstly take data in model object ******/
-               user.setName("Md Amir Hossain ");
-//               sched.setImage("image"+i);
-               user.setMobileNumber("01718738124");
-               user.setDegignation("Software Engineer");
-               user.setTeamName("Rose");
-               user.setBusNumber("2");
-               user.setEmail("amir.ict.engg@gmail.com");
-               user.setRoomNumber("5");
-               user.setUniqueNumber("123456789");
-               user.setUrl("http:\\www."+i+".com");
-                
-            /******** Take Model Object in ArrayList **********/
-            userList.add( user );
-        }
+//            final User user = new User();
+//                 
+//              /******* Firstly take data in model object ******/
+//               user.setName("Md Amir Hossain ");
+////               sched.setImage("image"+i);
+//               user.setMobileNumber("01718738124");
+//               user.setDegignation("Software Engineer");
+//               user.setTeamName("Rose");
+//               user.setBusNumber("2");
+//               user.setEmail("amir.ict.engg@gmail.com");
+//               user.setRoomNumber("5");
+//               user.setUniqueNumber("123456789");
+//               user.setUrl("http:\\www."+i+".com");
+//                
+//            /******** Take Model Object in ArrayList **********/
+//            userList.add( user );
+//        }
          
     }
     
