@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 import com.half.adapter.UserAdapter.ViewHolder;
 import com.half.circlegroup.R;
+import com.half.domain.Alert;
 import com.half.domain.AlertAndSchedule;
 import com.half.domain.User;
 import com.half.util.AppConstant;
@@ -18,15 +19,15 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-public class AlertScheduleAdapter extends BaseAdapter {
+public class AlertAdapter extends BaseAdapter {
 	
-	private ArrayList<AlertAndSchedule> alertList ;
+	private ArrayList<Alert> alertList ;
 	private Activity activity;
 	private static LayoutInflater inflater1=null;
-	private AlertAndSchedule oneAlert;
+	private Alert oneAlert;
 	private String sign;
 	
-	public AlertScheduleAdapter(Activity activity, ArrayList list,String sign)
+	public AlertAdapter(Activity activity, ArrayList list,String sign)
 	{
 		this.activity =  activity;
 		this.alertList = list;
@@ -95,28 +96,19 @@ public class AlertScheduleAdapter extends BaseAdapter {
         {
             /***** Get each Model object from Arraylist ********/
         	oneAlert=null;
-        	oneAlert = ( AlertAndSchedule ) alertList.get( index ); 
+        	oneAlert = ( Alert ) alertList.get( index ); 
              
             /************  Set Model values in Holder elements ***********/
 
-             holder.txtSubject.setText( oneAlert.getSubject());
-//             holder.imgSign.setImageResourcesetImageResource( res.getIdentifier( "com.half.adapter:drawable/"+temUser.getImage(),null,null)); );
-//             holder.txtDesignation.setText( temUser.getDegignation() );
-             //holder.imgProfilePic.setImageResource( res.getIdentifier( "com.half.adapter:drawable/"+temUser.getImage(),null,null));
-              
-             if(sign.equalsIgnoreCase(AppConstant.ALERT_VALUE))
+             holder.txtSubject.setText( oneAlert.getAlertSubject());             
+//             if(sign.equalsIgnoreCase(AppConstant.ALERT_VALUE))
             	 holder.imgSign.setImageResource(R.drawable.orange_circle);
-             if(sign.equalsIgnoreCase(AppConstant.SCHEDULE_VALUE))
-            	 holder.imgSign.setImageResource(R.drawable.green_circle);
-            if(sign.equalsIgnoreCase(AppConstant.INVITATION_VALUE))
-            	holder.imgSign.setImageResource(R.drawable.invite);
              
-             
-             
-             
-             /******** Set Item Click Listner for LayoutInflater for each row *******/
-
-//             vi.setOnClickListener(new OnItemClickListener( position ));
+//             if(sign.equalsIgnoreCase(AppConstant.SCHEDULE_VALUE))
+//            	 holder.imgSign.setImageResource(R.drawable.green_circle);
+//            if(sign.equalsIgnoreCase(AppConstant.INVITATION_VALUE))
+//            	holder.imgSign.setImageResource(R.drawable.invite);             
+         
         }
         return vi;
 	}

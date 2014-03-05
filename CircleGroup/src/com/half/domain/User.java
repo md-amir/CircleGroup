@@ -196,19 +196,7 @@ public class User implements Parcelable {
 		out.writeString(url);
 		out.writeByte((byte)(isAdmin ? 1 : 0 ) );
 		// out.writeParcelable(profilePic, flags);
-		
-		
-//		this.name = in.readString();
-//		this.degignation = in.readString();
-//		this.email = in.readString();
-//		this.password = in.readString();
-//		this.mobileNumber = in.readString();
-//		this.roomNumber = in.readString();
-//		this.teamName = in.readString();
-//		this.busNumber = in.readString();
-//		this.organization = in.readString();
-//		this.losTeamName = in.readString();
-//		this.url = in.readString();
+
 
 	}
 	

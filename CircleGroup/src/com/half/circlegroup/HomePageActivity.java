@@ -37,8 +37,7 @@ public class HomePageActivity extends Activity implements OnClickListener,Server
 	private Intent intent;
 	private Context context;
 	
-	String SERVER_ADDRESS_FOR_ALL_MEMBERS = "http://marufnafi.byethost4.com/batemplist.php?";
-	private final int ALL_MEMBER_CALL = 200;
+	
 
 	private ArrayList<User> allUserList;
 	
@@ -150,7 +149,7 @@ public class HomePageActivity extends Activity implements OnClickListener,Server
 	 
 	  paramList.put("version", "");
 	  
-	  new Serverconnector(this, this, SERVER_ADDRESS_FOR_ALL_MEMBERS, paramList, ALL_MEMBER_CALL, Serverconnector.HTTP_STRING).start();
+	  new Serverconnector(this, this, AppConstant.SERVER_ADDRESS_FOR_ALL_MEMBERS, paramList, AppConstant.ALL_MEMBER_CALL, Serverconnector.HTTP_STRING).start();
 	 }
 	
 	
@@ -160,7 +159,7 @@ public class HomePageActivity extends Activity implements OnClickListener,Server
 		System.out.println("Road Response: " + data);
 		Log.v("","response"+data);
 		
-		if(response.getRequetType() == ALL_MEMBER_CALL)
+		if(response.getRequetType() == AppConstant.ALL_MEMBER_CALL)
 		{
 			if(response.getStatus())
 			{
@@ -180,8 +179,7 @@ public class HomePageActivity extends Activity implements OnClickListener,Server
 			{
 			
 			}
-		}
-		
+		}		
 	}
 
 }
