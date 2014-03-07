@@ -9,3 +9,15 @@ http://marufnafi.byethost4.com/batschedulelist.php
 
 employee list view api
 http://marufnafi.byethost4.com/batemplist.php
+
+for alert list
+http://marufnafi.byethost4.com/batalertlist.php
+
+for adding alert
+http://marufnafi.byethost4.com/batalertadd.php
+
+Invitation list api
+http://marufnafi.byethost4.com/batinvitationlist.php
+
+invitation add api
+http://marufnafi.byethost4.com/batinvitationadd.php

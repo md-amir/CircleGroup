@@ -18,8 +18,12 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.half.adapter.AlertAdapter;
+import com.half.adapter.InvitationAdapter;
+import com.half.adapter.ScheduleAdapter;
 import com.half.domain.Alert;
 import com.half.domain.AlertAndSchedule;
+import com.half.domain.Invitation;
+import com.half.domain.Schedule;
 import com.half.domain.User;
 import com.half.util.AppConstant;
 import com.half.util.InitialInfo;
@@ -32,11 +36,15 @@ import com.half.util.Serverconnector;
 public class AlertScheduleActivity extends Activity implements OnItemClickListener,OnClickListener,ServerResponseListener{
 	
 	private ArrayList<Alert> alertList;
+	private ArrayList<Schedule> scheduleList;
+	private ArrayList<Invitation> invitationList;
 	private LinearLayout lnAlertScheduleButtons;
 	private Button btnSetAlert;
 	private Button btnSetSchedule;
-    private AlertAdapter adapter;
-	private ListView lvAlert;
+    private AlertAdapter alertAdapter;
+    private ScheduleAdapter scheduleAdapter;
+    private InvitationAdapter invitaionAdapter;
+	private ListView lvAIS;
 	private Context context;
 	private Intent intent;
 	private String sign;
@@ -45,9 +53,29 @@ public class AlertScheduleActivity extends Activity implements OnItemClickListen
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_alert_schedule);
-		serverCallForAlertList();
+		sign = getIntent().getStringExtra(Keys.ALERT_SCHEDULE_KEY);	
 		
-		
+		if(sign.equalsIgnoreCase(AppConstant.ALERT_VALUE))
+			{
+			serverCallForAlertList();
+			}
+	    if(sign.equalsIgnoreCase(AppConstant.SCHEDULE_VALUE))
+	        {
+	    	  serverCallForScheduleList();
+	        }
+	   if(sign.equalsIgnoreCase(AppConstant.INVITATION_VALUE))
+	   {		   
+		   serverCallForInvitation();
+	   }	
+	}
+
+
+
+	private void serverCallForInvitation() {
+		  invitationList = new ArrayList<Invitation>();
+		  Hashtable<String, String> paramList = new Hashtable<String, String>();		 
+		  paramList.put("version", "");		  
+		  new Serverconnector(this, this, AppConstant.SERVER_ADDRESS_FOR_INVITATION_LIST, paramList, AppConstant.INVITATION_LIST_CALL, Serverconnector.HTTP_STRING).start();
 		
 	}
 
@@ -57,12 +85,7 @@ public class AlertScheduleActivity extends Activity implements OnItemClickListen
 		btnSetAlert.setOnClickListener(this);
 		btnSetSchedule = (Button) findViewById(R.id.btnSetSchedule);
 		btnSetSchedule.setOnClickListener(this);
-		lvAlert = (ListView) findViewById(R.id.lvAlert);
-		
-		sign = getIntent().getStringExtra(Keys.ALERT_SCHEDULE_KEY);	
-		adapter = new AlertAdapter(this, alertList,sign);
-		lvAlert.setAdapter(adapter);
-		lvAlert.setOnItemClickListener(this);
+		lvAIS = (ListView) findViewById(R.id.lvAlert);
 		context= this;
 		
 		if(!InitialInfo.getOwn().isAdmin())
@@ -72,24 +95,37 @@ public class AlertScheduleActivity extends Activity implements OnItemClickListen
 		}
 		
 		if(sign.equalsIgnoreCase(AppConstant.INVITATION_VALUE))
-		{
+		   {
     	   btnSetAlert.setVisibility(View.VISIBLE);
-		   btnSetAlert.setText("Invite to other");
+		   btnSetAlert.setText("Invite to other");//work as invitation button
 		   btnSetSchedule.setVisibility(View.GONE);
-		}
-			
+		  }else if(sign.equalsIgnoreCase(AppConstant.SCHEDULE_VALUE))
+		    {
+	    	   btnSetAlert.setVisibility(View.GONE);
+			   btnSetSchedule.setVisibility(View.VISIBLE);
+			   
+			}else if(sign.equalsIgnoreCase(AppConstant.ALERT_VALUE))
+			     {
+		    	   btnSetAlert.setVisibility(View.VISIBLE);
+				   btnSetSchedule.setVisibility(View.GONE);
+				 }		
 		
 	}
 
 
 	private void serverCallForAlertList() {
-		
-		alertList = new ArrayList<Alert>();
-		
+			alertList = new ArrayList<Alert>();
+		    Hashtable<String, String> paramList = new Hashtable<String, String>();		 
+	        paramList.put("version", "");		  
+		    new Serverconnector(this, this, AppConstant.SERVER_ADDRESS_FOR_ALERT_LIST, paramList, AppConstant.ALERT_LIST_CALL, Serverconnector.HTTP_STRING).start();
+			
+	}
+	
+	private void serverCallForScheduleList() {
+		  scheduleList = new ArrayList<Schedule>();
 		  Hashtable<String, String> paramList = new Hashtable<String, String>();		 
 		  paramList.put("version", "");		  
-		  new Serverconnector(this, this, AppConstant.SERVER_ADDRESS_FOR_ALERT_LIST, paramList, AppConstant.ALERT_LIST_CALL, Serverconnector.HTTP_STRING).start();
-		
+		  new Serverconnector(this, this, AppConstant.SERVER_ADDRESS_FOR_SCHEDULE_LIST, paramList, AppConstant.SCHEDULE_LIST_CALL, Serverconnector.HTTP_STRING).start();
 		
 	}
 
@@ -140,7 +176,56 @@ public class AlertScheduleActivity extends Activity implements OnItemClickListen
 				try
 				{
 					alertList = Alert.parse(response.getData().toString());
+					alertAdapter = new AlertAdapter(this, alertList,sign);
 					intialControls();
+					lvAIS.setAdapter(alertAdapter);
+					
+					
+				}
+				catch (Exception e)
+				{
+					e.printStackTrace();
+					
+				}
+			}
+			else
+			{
+			
+			}
+		}else if(response.getRequetType() == AppConstant.SCHEDULE_LIST_CALL)
+		{
+			if(response.getStatus())
+			{
+				try
+				{
+					scheduleList = Schedule.parse(response.getData().toString());
+					scheduleAdapter = new ScheduleAdapter(this, scheduleList,sign);
+					intialControls();
+					lvAIS.setAdapter(scheduleAdapter);
+					
+					
+				}
+				catch (Exception e)
+				{
+					e.printStackTrace();
+					
+				}
+			}
+			else
+			{
+			
+			}
+		}else if(response.getRequetType() == AppConstant.INVITATION_LIST_CALL)
+		{
+			if(response.getStatus())
+			{
+				try
+				{
+					invitationList = Invitation.parse(response.getData().toString());
+					invitaionAdapter = new InvitationAdapter(this, invitationList,sign);
+					intialControls();
+					lvAIS.setAdapter(invitaionAdapter);
+					
 					
 				}
 				catch (Exception e)
@@ -154,7 +239,7 @@ public class AlertScheduleActivity extends Activity implements OnItemClickListen
 			
 			}
 		}
-		
+		lvAIS.setOnItemClickListener(this);
 	}
 	
 }

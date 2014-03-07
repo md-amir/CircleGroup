@@ -2,6 +2,7 @@ package com.half.util;
 
 public class AppConstant {
 	
+	
 	public static String SERVER_ADDRESS_FOR_ALL_MEMBERS = "http://marufnafi.byethost4.com/batemplist.php?";
 	public static String SERVER_ADDRESS_FOR_SCHEDULE_LIST = "http://marufnafi.byethost4.com/batschedulelist.php?";
 	public static String SERVER_ADDRESS_FOR_ADD_SCHEDULE = "http://marufnafi.byethost4.com/batscheduleadd.php?";
@@ -27,19 +28,29 @@ public class AppConstant {
 	public static int ADD_MEDIA_CALL = 900;
 	
 	
+	public static String TO_ORGANIGATION = "organigetion";
+	public static String TO_LOS_TEAM = "losTeam";
 	
 	public static String INVITATION_VALUE = "invitations";
 	public static String SCHEDULE_VALUE = "Schedule";
 	public static String ALERT_VALUE = "Alert";
-	public static String LOS_GREEN_VALUE = "green";
-	public static String LOS_RED_VALUE = "red";
-	public static String LOS_ORANGE_VALUE = "orange";
-	public static String LOS_YELLOW_VALUE = "yellow";
+	
 
-	public static String ORGANIZATION_CORA_VALUE = "cora";
-	public static String ORGANIZATION_HR_VALUE = "hr";
-	public static String ORGANIZATION_FINANCE_VALUE = "finance";
-	public static String ORGANIZATION_SECURITY_VALUE = "security";
-	public static String ORGANIZATION_IT_VALUE = "it";
-	public static String ORGANIZATION_LEGAL_VALUE = "legal";
+	public static String LOS_WHITE_VALUE = "White";
+	public static String LOS_PURPEL_VALUE = "Blue";
+	public static String LOS_BLACK_VALUE = "Black";
+	public static String LOS_SKYBLUE_VALUE = "skyblue";
+	public static String LOS_GREEN_VALUE = "Green";
+	public static String LOS_RED_VALUE = "Red";
+	public static String LOS_ORANGE_VALUE = "Orange";
+	public static String LOS_YELLOW_VALUE = "Yellow";
+	//Grey
+
+	public static String ORGANIZATION_CORA_VALUE = "CORA";
+	public static String ORGANIZATION_HR_VALUE = "HUMAN RESOURCES";
+	public static String ORGANIZATION_FINANCE_VALUE = "FINANCE";
+	public static String ORGANIZATION_GENERAL_VALUE = "GENERAL";
+	public static String ORGANIZATION_IT_VALUE = "INFORMATION TECHNOLOGY";
+	public static String ORGANIZATION_LEGAL_VALUE = "LEGAL & SECRETARIAL";
+	public static String ORGANIZATION_ALL_MEMBER = "ALL";
 }

@@ -1,8 +1,14 @@
  package com.half.domain;
 
+import java.util.ArrayList;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
+
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
+import android.util.Log;
 
 public class Invitation implements Parcelable{
 	private String invitationId;
@@ -21,6 +27,10 @@ public class Invitation implements Parcelable{
 		
 	}
 	
+	public Invitation() {
+		// TODO Auto-generated constructor stub
+	}
+
 	public static final Parcelable.Creator<Invitation> CREATOR = new Creator<Invitation>() {
 
 		public Invitation createFromParcel(Parcel in) {
@@ -80,11 +90,40 @@ public class Invitation implements Parcelable{
 		out.writeString(invitationMessage);
 		out.writeString(invitationDateTime);
 		
-		
-	
-		
 	}
 	
+	public static ArrayList<Invitation> parse(String data) {
+
+		ArrayList<Invitation> invitationList = new ArrayList<Invitation>();
+	
+		
+		try 
+		{
+		    JSONArray jObjarray = new JSONArray(data);
+			Log.v("size","length"+jObjarray.length());
+			
+			
+			for(int i=0; i<jObjarray.length();i++){
+				
+			JSONObject jObj = jObjarray.getJSONObject(i);
+			
+			Invitation temp = new Invitation();
+			temp.setInvitationId(jObj.getString("invitation_id"));
+			temp.setInvitationFrom(jObj.getString("invitation_from"));
+			temp.setInvitationTo(jObj.getString("invitation_to"));
+			temp.setInvitationMessage(jObj.getString("invitation_message"));
+			temp.setInvitationDateTime(jObj.getString("invitation_datetime"));
+			invitationList.add(temp);
+			}	
+			
+			return  invitationList;
+			
+		}
+		catch (Exception e){
+			
+		}
+		return null;
+	}
 	
 	
 	

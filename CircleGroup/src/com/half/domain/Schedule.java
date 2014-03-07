@@ -1,8 +1,14 @@
 package com.half.domain;
 
+import java.util.ArrayList;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
+
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
+import android.util.Log;
 
 public class Schedule implements Parcelable {
 	
@@ -13,6 +19,8 @@ public class Schedule implements Parcelable {
 	private String scheduleEndTime;
 	private String scheduleVenue;
 	private String scheduleDateTime;
+	
+	private static ArrayList<Schedule> scheduleList;
 	
 	
 	
@@ -72,6 +80,10 @@ public class Schedule implements Parcelable {
 		
 	}
 	
+	public Schedule() {
+		// TODO Auto-generated constructor stub
+	}
+
 	public static final Parcelable.Creator<Schedule> CREATOR = new Creator<Schedule>() {
 
 		public Schedule createFromParcel(Parcel in) {
@@ -102,6 +114,41 @@ public class Schedule implements Parcelable {
 		out.writeString(scheduleVenue);
 		out.writeString(scheduleDateTime);
 		
+	}
+	
+	public static ArrayList<Schedule> parse(String data) {
+
+		scheduleList = new ArrayList<Schedule>();
+	
+		
+		try 
+		{
+		    JSONArray jObjarray = new JSONArray(data);
+			Log.v("size","length"+jObjarray.length());
+			
+			
+			for(int i=0; i<jObjarray.length();i++){
+				
+			JSONObject jObj = jObjarray.getJSONObject(i);
+			
+			Schedule temp = new Schedule();
+			temp.setScheduleId(jObj.getString("schedule_id"));
+			temp.setScheduleTitle(jObj.getString("schedule_title"));
+			temp.setScheduleVenue(jObj.getString("schedule_venue"));
+			temp.setScheduleStartTime(jObj.getString("schedule_starttime"));
+			temp.setScheduleEndTime(jObj.getString("schedule_endtime"));
+			temp.setScheduleDateTime(jObj.getString("schedule_datetime"));
+			temp.setScheduleDescription(jObj.getString("schedule_description"));
+			scheduleList.add(temp);
+			}	
+			
+			return  scheduleList;
+			
+		}
+		catch (Exception e){
+			
+		}
+		return null;
 	}
 	
 	

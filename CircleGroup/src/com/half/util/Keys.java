@@ -3,11 +3,14 @@ package com.half.util;
 public class Keys {
 	
 	
+	
+	public static String LOS_TEAM_KEY = "los";
 	public static String LOS_TEAM_GREEN_KEY = "losTeamGreen";
 	public static String LOS_TEAM_RED_KEY = "losTeamRed";
 	public static String LOS_TEAM_YELLOW_KEY = "losTeamYellow";
 	public static String LOS_TEAM_ORANGE_KEY = "losTeamOrange";
 
+	public static String ORGANIZATION_KEY = "organization";
 	public static String ORGANIZATION_CORA_KEY = "organizationCora";
 	public static String ORGANIZATION_HR_KEY = "organizationHr";
 	public static String ORGANIZATION_FINANCE_KEY = "organizationFinance";

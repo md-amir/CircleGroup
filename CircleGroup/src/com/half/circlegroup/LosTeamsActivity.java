@@ -1,6 +1,7 @@
 package com.half.circlegroup;
 
 import com.half.util.AppConstant;
+import com.half.util.AppHandler;
 import com.half.util.Keys;
 
 import android.app.Activity;
@@ -17,6 +18,11 @@ public class LosTeamsActivity extends Activity implements OnClickListener {
 	private Button btnRed;
 	private Button btnYellow;
 	private Button btnOrange;
+	private Button btnWhite;
+	private Button btnPurpel;
+	private Button btnBlack;
+	private Button btnSkyBlue;
+	
 	private Context context;
 	private Intent intent;
 
@@ -38,6 +44,16 @@ public class LosTeamsActivity extends Activity implements OnClickListener {
 		btnRed.setOnClickListener(this);
 		btnYellow = (Button) findViewById(R.id.btnYellow);
 		btnYellow.setOnClickListener(this);
+		
+		btnSkyBlue = (Button) findViewById(R.id.btnSkyBlue);
+		btnSkyBlue.setOnClickListener(this);
+		btnBlack = (Button) findViewById(R.id.btnBlack);
+		btnBlack.setOnClickListener(this);
+		btnPurpel = (Button) findViewById(R.id.btnPurpel);
+		btnPurpel.setOnClickListener(this);
+		btnWhite = (Button) findViewById(R.id.btnWhite);
+		btnWhite.setOnClickListener(this);
+			
 		context = this;
 		intent =  new Intent(this,MemberListActivity.class);
 		
@@ -45,26 +61,46 @@ public class LosTeamsActivity extends Activity implements OnClickListener {
 
 	@Override
 	public void onClick(View view) {
-		
+		AppHandler.setCallForward(AppConstant.TO_LOS_TEAM);
 		switch (view.getId()) {
 		case R.id.btnGreen:
 		{  
-			intent.putExtra(Keys.LOS_TEAM_GREEN_KEY, AppConstant.LOS_GREEN_VALUE);
+			intent.putExtra(Keys.LOS_TEAM_KEY, AppConstant.LOS_GREEN_VALUE);
 			break;
 		}
 		case R.id.btnRed:
 		{
-			intent.putExtra(Keys.LOS_TEAM_RED_KEY, AppConstant.LOS_RED_VALUE);
+			intent.putExtra(Keys.LOS_TEAM_KEY, AppConstant.LOS_RED_VALUE);
 			break;
 		}
 		case R.id.btnYellow:
 		{
-			intent.putExtra(Keys.LOS_TEAM_YELLOW_KEY, AppConstant.LOS_YELLOW_VALUE);
+			intent.putExtra(Keys.LOS_TEAM_KEY, AppConstant.LOS_YELLOW_VALUE);
 			break;
 		}
 		case R.id.btnOrange:
 		{
-			intent.putExtra(Keys.LOS_TEAM_ORANGE_KEY, AppConstant.LOS_ORANGE_VALUE);
+			intent.putExtra(Keys.LOS_TEAM_KEY, AppConstant.LOS_ORANGE_VALUE);
+			break;
+		}
+		case R.id.btnWhite:
+		{
+			intent.putExtra(Keys.LOS_TEAM_KEY, AppConstant.LOS_WHITE_VALUE);
+			break;
+		}
+		case R.id.btnPurpel:
+		{
+			intent.putExtra(Keys.LOS_TEAM_KEY, AppConstant.LOS_PURPEL_VALUE);
+			break;
+		}
+		case R.id.btnBlack:
+		{
+			intent.putExtra(Keys.LOS_TEAM_KEY, AppConstant.LOS_BLACK_VALUE);
+			break;
+		}
+		case R.id.btnSkyBlue:
+		{
+			intent.putExtra(Keys.LOS_TEAM_KEY, AppConstant.LOS_SKYBLUE_VALUE);
 			break;
 		}
 		default:
