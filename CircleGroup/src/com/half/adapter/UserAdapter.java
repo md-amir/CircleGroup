@@ -102,7 +102,7 @@ public class UserAdapter extends BaseAdapter   implements OnClickListener {
               
              if(userList.size()<=0)
              {
-                 holder.txtName.setText("No Data");
+//                 holder.txtName.setText("No Data");
                   
              }
              else
