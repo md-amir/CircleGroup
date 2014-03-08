@@ -4,6 +4,9 @@ public class Keys {
 	
 	
 	
+	public static final String ALERT_INVITAION_SCHEDULE_PARCELABLE_KEY = "AIS";
+	
+	public static String USER = "user";
 	public static String LOS_TEAM_KEY = "los";
 	public static String LOS_TEAM_GREEN_KEY = "losTeamGreen";
 	public static String LOS_TEAM_RED_KEY = "losTeamRed";

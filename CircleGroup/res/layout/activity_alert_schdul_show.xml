@@ -3,7 +3,7 @@
     style="@style/backgroundTheme"
     android:orientation="vertical"
     android:weightSum="100"
-    tools:context=".AlertSchdulShowActivity" >
+    tools:context=".AlertInvitaionDetailsActivity" >
 
     <LinearLayout
         android:id="@+id/lnTeamHeader"

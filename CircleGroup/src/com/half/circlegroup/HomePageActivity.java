@@ -6,6 +6,7 @@ import java.util.Hashtable;
 import org.json.JSONObject;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -33,9 +34,11 @@ public class HomePageActivity extends Activity implements OnClickListener,Server
 	private Button btnSchedule;
 	private Button btnVanue;
 	private Button btnSos;
+	private Button btnBack;
 	
 	private Intent intent;
 	private Context context;
+	private ProgressDialog ringProgressDialog;
 	
 	
 
@@ -47,8 +50,12 @@ public class HomePageActivity extends Activity implements OnClickListener,Server
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_home_page);
 		initialControls();
-		serverReqestForAllMembers();
-	}
+		
+		if(allUserList.size()==0)
+		{		
+		launchRingDialog();	    
+		}
+		}
 
 	private void initialControls() {
 
@@ -68,6 +75,9 @@ public class HomePageActivity extends Activity implements OnClickListener,Server
 		btnVanue.setOnClickListener(this);
 		btnSos = (Button) findViewById(R.id.btnSos);
 		btnSos.setOnClickListener(this);
+		View included =  findViewById(R.id.header);
+		btnBack = (Button) included.findViewById(R.id.btnBack);
+		btnBack.setOnClickListener(this);
 		context = this;
 		
 		allUserList = new ArrayList<User>();
@@ -90,6 +100,27 @@ public class HomePageActivity extends Activity implements OnClickListener,Server
 		InitialInfo.setOwn(own);
 		
 	}
+	
+	public void launchRingDialog() {
+		
+		        final ProgressDialog ringProgressDialog = ProgressDialog.show(context, "Please wait ...", "Downloading data ...", true);
+				        ringProgressDialog.setCancelable(true);
+				        serverReqestForAllMembers(); 
+				        new Thread(new Runnable() {
+		
+		            @Override
+				            public void run() {
+				                try {
+//				                	serverReqestForAllMembers();  
+				                	Thread.sleep(25000);
+//				                	ringProgressDialog.dismiss();
+
+				                } catch (Exception e) {
+				                }
+				                ringProgressDialog.dismiss();
+				            }
+				        }).start();
+				    }
 
 	@Override
 	public void onClick(View view) {
@@ -110,13 +141,13 @@ public class HomePageActivity extends Activity implements OnClickListener,Server
 			break;
 		}
 		case R.id.btnAlert: {
-			 intent = new Intent(context, AlertScheduleActivity.class);
+			 intent = new Intent(context, AlertScheduleInvitationListActivity.class);
 			 intent.putExtra(Keys.ALERT_SCHEDULE_KEY, AppConstant.ALERT_VALUE);
 	         startActivity(intent);
 			 break;
 		}
 		case R.id.btnSchedule: {
-            intent = new Intent(context, AlertScheduleActivity.class);
+            intent = new Intent(context, AlertScheduleInvitationListActivity.class);
             intent.putExtra(Keys.ALERT_SCHEDULE_KEY, AppConstant.SCHEDULE_VALUE);
             startActivity(intent);
 			break;
@@ -127,7 +158,7 @@ public class HomePageActivity extends Activity implements OnClickListener,Server
 			break;
 		}
 		case R.id.btnInvite: {
-			intent = new Intent(context, AlertScheduleActivity.class);
+			intent = new Intent(context, AlertScheduleInvitationListActivity.class);
 			intent.putExtra(Keys.ALERT_SCHEDULE_KEY, AppConstant.INVITATION_VALUE);
 			startActivity(intent);
 			break;
@@ -136,6 +167,10 @@ public class HomePageActivity extends Activity implements OnClickListener,Server
 //            intent = new Intent(context, VanueActivity.class);
 //            startActivity(intent);
 //			break;
+		}
+		case R.id.btnBack: {
+            finish();
+            break;
 		}
 		default:
 			break;
@@ -167,6 +202,7 @@ public class HomePageActivity extends Activity implements OnClickListener,Server
 				{
 					allUserList = User.parse(response.getData().toString());
 					InitialInfo.setMemberList(allUserList);
+					ringProgressDialog.dismiss();
 					
 				}
 				catch (Exception e)

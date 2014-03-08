@@ -26,6 +26,7 @@ import com.half.domain.Invitation;
 import com.half.domain.Schedule;
 import com.half.domain.User;
 import com.half.util.AppConstant;
+import com.half.util.AppHandler;
 import com.half.util.InitialInfo;
 import com.half.util.Keys;
 import com.half.util.Response;
@@ -33,7 +34,7 @@ import com.half.util.ServerResponseListener;
 import com.half.util.Serverconnector;
 
 
-public class AlertScheduleActivity extends Activity implements OnItemClickListener,OnClickListener,ServerResponseListener{
+public class AlertScheduleInvitationListActivity extends Activity implements OnItemClickListener,OnClickListener,ServerResponseListener{
 	
 	private ArrayList<Alert> alertList;
 	private ArrayList<Schedule> scheduleList;
@@ -48,6 +49,7 @@ public class AlertScheduleActivity extends Activity implements OnItemClickListen
 	private Context context;
 	private Intent intent;
 	private String sign;
+	private Bundle bundle;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -99,12 +101,14 @@ public class AlertScheduleActivity extends Activity implements OnItemClickListen
     	   btnSetAlert.setVisibility(View.VISIBLE);
 		   btnSetAlert.setText("Invite to other");//work as invitation button
 		   btnSetSchedule.setVisibility(View.GONE);
-		  }else if(sign.equalsIgnoreCase(AppConstant.SCHEDULE_VALUE))
+		  }
+		else if(sign.equalsIgnoreCase(AppConstant.SCHEDULE_VALUE))
 		    {
 	    	   btnSetAlert.setVisibility(View.GONE);
 			   btnSetSchedule.setVisibility(View.VISIBLE);
 			   
-			}else if(sign.equalsIgnoreCase(AppConstant.ALERT_VALUE))
+			}
+		else if(sign.equalsIgnoreCase(AppConstant.ALERT_VALUE))
 			     {
 		    	   btnSetAlert.setVisibility(View.VISIBLE);
 				   btnSetSchedule.setVisibility(View.GONE);
@@ -131,28 +135,51 @@ public class AlertScheduleActivity extends Activity implements OnItemClickListen
 
 	@Override
 	public void onItemClick(AdapterView<?> arg0, View arg1, int position, long arg3) {
+		Bundle bundle = new Bundle();
 		
-		Alert as = (Alert)alertList.get(position);
-//		Toast toast = Toast.makeText(context, as.getSubject(), Toast.LENGTH_SHORT);
-//		toast.show();
-//		String []value = {as.getMessageFrom(),as.getSubject(),as.getMessage()};
-		intent = new Intent(this,AlertSchdulShowActivity.class);
-//		intent.putExtra(Keys.ALERT_SCHEDULE_KEY, value);
-//		startActivity(intent);
+		if(sign.equalsIgnoreCase(AppConstant.INVITATION_VALUE))
+		     {
+			Invitation invitation = (Invitation)invitationList.get(position);
+			bundle.putParcelable(Keys.ALERT_INVITAION_SCHEDULE_PARCELABLE_KEY, invitation);
+			AppHandler.setCallForward(AppConstant.INVITATION_VALUE);
+			intent = new Intent(this,AlertInvitaionDetailsActivity.class);
+ 	        }
+		else if(sign.equalsIgnoreCase(AppConstant.SCHEDULE_VALUE))
+		       {
+			Schedule schedule = (Schedule)scheduleList.get(position);
+			bundle.putParcelable(Keys.ALERT_INVITAION_SCHEDULE_PARCELABLE_KEY,schedule);
+			intent = new Intent(this,ScheduleDetailsActivity.class);
+            AppHandler.setScheduleOperation(AppConstant.SHOW);
+			   
+			   }
+		else if(sign.equalsIgnoreCase(AppConstant.ALERT_VALUE))
+			     {
+			Alert as = (Alert)alertList.get(position);
+			bundle.putParcelable(Keys.ALERT_INVITAION_SCHEDULE_PARCELABLE_KEY, as);
+			AppHandler.setCallForward(AppConstant.ALERT_VALUE);
+			intent = new Intent(this,AlertInvitaionDetailsActivity.class);
+
+				 }		
+        intent.putExtras(bundle);
+		startActivity(intent);		
+		
 	}
 
 	@Override
 	public void onClick(View v) {
-		intent = new Intent(this,AlertSchedulePostActivity.class);
+		
 		switch (v.getId()) {
 		case R.id.btnSetAlert:
 		{
+			intent = new Intent(this,AlertSchedulePostActivity.class);
 			intent.putExtra(Keys.ALERT_SCHEDULE_KEY, AppConstant.ALERT_VALUE);
 			break;
 		}
 		case R.id.btnSetSchedule:
 		{
+			intent = new Intent(this,ScheduleDetailsActivity.class);
 			intent.putExtra(Keys.ALERT_SCHEDULE_KEY, AppConstant.SCHEDULE_VALUE);
+			AppHandler.setScheduleOperation(AppConstant.POST);
 			break;
 		}
 		default:

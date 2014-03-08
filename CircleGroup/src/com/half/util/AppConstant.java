@@ -3,6 +3,7 @@ package com.half.util;
 public class AppConstant {
 	
 	
+	
 	public static String SERVER_ADDRESS_FOR_ALL_MEMBERS = "http://marufnafi.byethost4.com/batemplist.php?";
 	public static String SERVER_ADDRESS_FOR_SCHEDULE_LIST = "http://marufnafi.byethost4.com/batschedulelist.php?";
 	public static String SERVER_ADDRESS_FOR_ADD_SCHEDULE = "http://marufnafi.byethost4.com/batscheduleadd.php?";
@@ -34,6 +35,9 @@ public class AppConstant {
 	public static String INVITATION_VALUE = "invitations";
 	public static String SCHEDULE_VALUE = "Schedule";
 	public static String ALERT_VALUE = "Alert";
+	public static final String SHOW = "show";
+	public static final String POST = "post";
+	
 	
 
 	public static String LOS_WHITE_VALUE = "White";

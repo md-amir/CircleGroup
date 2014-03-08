@@ -66,7 +66,7 @@ public class MemberListActivity extends Activity {
 
         intent = new Intent(MemberListActivity.this,ProfilePageActivity.class);
         Bundle mBundle = new Bundle(); 
-        mBundle.putParcelable("user", user); 
+        mBundle.putParcelable(Keys.USER, user); 
         intent.putExtras( mBundle);
         startActivity(intent);
     }

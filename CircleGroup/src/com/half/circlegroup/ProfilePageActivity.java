@@ -13,6 +13,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.half.domain.User;
+import com.half.util.Keys;
 
 public class ProfilePageActivity extends Activity implements OnClickListener {
 	
@@ -60,7 +61,7 @@ public class ProfilePageActivity extends Activity implements OnClickListener {
 //		Bundle data = getIntent().getExtras();
 //		User user = (User) data.getParcelable("user");
 		
-		user = (User)getIntent().getParcelableExtra("user");
+		user = (User)getIntent().getParcelableExtra(Keys.USER);
 		
 		txtUserName.setText(user.getName());
 		txtUserDesignation.setText(user.getDegignation());

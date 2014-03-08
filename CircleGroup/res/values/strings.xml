@@ -17,5 +17,6 @@
     <string name="title_activity_alert_schdul_show">AlertSchdulShowActivity</string>
     <string name="title_activity_alert_schedule_post">AlertSchedulePostActivity</string>
     <string name="title_activity_vanue">VanueActivity</string>
+    <string name="title_activity_schedule_details">ScheduleDetailsActivity</string>
 
 </resources>

@@ -227,7 +227,8 @@ public class User implements Parcelable {
 			temp.setRoomNumber(jObj.getString("emp_room"));
 			temp.setTeamName(jObj.getString("emp_team"));
 			temp.setUniqueNumber(jObj.getString("emp_code"));
-			temp.setUrl(jObj.getString("emp_picture"));
+			String url = jObj.getString("emp_picture");
+			temp.setUrl(url==null? "":url);
 			//emp_id
 			allUserList.add(temp);
 			

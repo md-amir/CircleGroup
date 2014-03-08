@@ -1,50 +1,45 @@
 package com.half.adapter;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.util.ArrayList;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.res.Resources;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.half.circlegroup.MemberListActivity;
 import com.half.circlegroup.R;
 import com.half.domain.User;
+import com.half.util.ImageDownloaderTask;
+
+
 
 /********* Adapter class extends with BaseAdapter and implements with OnClickListener ************/
-public class UserAdapter extends BaseAdapter   implements OnClickListener {
+public class UserAdapter extends BaseAdapter {
           
          /*********** Declare Used Variables *********/
-         private Activity activity;
-         private ArrayList userList;
+         private Context context;
+         private ArrayList<User> userList;
          private static LayoutInflater inflater=null;
          public Resources res;
          User temUser=null;
+         private ViewHolder holder;
          int i=0;
           
          /*************  UserAdapter Constructor *****************/
-         public UserAdapter(Activity activity, ArrayList userList,Resources resLocal) {
+         public UserAdapter(Context context, ArrayList<User> userList,Resources resLocal) {
               
                 /********** Take passed values **********/
-                 this.activity = activity;
+                 this.context = context;
                  this.userList=userList;
                  res = resLocal;
               
                  /***********  Layout inflator to call external xml layout () ***********/
-                  inflater = ( LayoutInflater )activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+                  inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE); //LayoutInflater.from(this.context);
               
          }
       
@@ -77,24 +72,15 @@ public class UserAdapter extends BaseAdapter   implements OnClickListener {
       
          /****** Depends upon userList size called for each row , Create each ListView row *****/
          public View getView(int position, View convertView, ViewGroup parent) {
-              
+     
              View vi = convertView;
-             ViewHolder holder;
               
              if(convertView==null){
-                  
-                 /****** Inflate tabitem.xml file for each row ( Defined below ) *******/
                  vi = inflater.inflate(R.layout.row, null);
-                  
-                 /****** View Holder Object to contain tabitem.xml file elements ******/
- 
                  holder = new ViewHolder();
                  holder.txtName = (TextView) vi.findViewById(R.id.txtName);
                  holder.txtMobileNumber=(TextView)vi.findViewById(R.id.txtMobileNumber);
-//                 holder.txtDesignation=(TextView)vi.findViewById(R.id.txtd);
                  holder.imgProfilePic=(ImageView)vi.findViewById(R.id.imgProfilePic);
-                  
-                /************  Set holder with LayoutInflater ************/
                  vi.setTag( holder );
              }
              else 
@@ -102,60 +88,33 @@ public class UserAdapter extends BaseAdapter   implements OnClickListener {
               
              if(userList.size()<=0)
              {
-//                 holder.txtName.setText("No Data");
-                  
+                
              }
              else
-             {
-                 /***** Get each Model object from Arraylist ********/
+             {                
                  temUser=null;
-                 temUser = ( User ) userList.get( position ); 
-                  
-                 /************  Set Model values in Holder elements ***********/
- 
-                  holder.txtName.setText( temUser.getName());
-                  holder.txtMobileNumber.setText( temUser.getMobileNumber() );
-//                holder.txtDesignation.setText( temUser.getDegignation() );
-//                  holder.imgProfilePic.setImageResource( res.getIdentifier( "com.half.adapter:drawable/"+temUser.getImage(),null,null));
-                  
-//                  try {
-//                	  
-//                	  Bitmap bitmap = BitmapFactory.decodeStream((InputStream)new URL("https://www.facebook.com/photo.php?fbid=1132819179145&set=a.1280951842369.36264.1787275162&type=1&theater").getContent());
-//                	  holder.imgProfilePic.setImageBitmap(bitmap); 
-//                	} catch (MalformedURLException e) {
-//                	  e.printStackTrace();
-//                	} catch (IOException e) {
-//                	  e.printStackTrace();
-//                	}
-//                    /******** Set Item Click Listner for LayoutInflater for each row *******/
- 
-                  vi.setOnClickListener(new OnItemClickListener( position ));
-             }
+                 temUser = userList.get( position ); 
+                 holder.txtName.setText( temUser.getName());
+                 holder.txtMobileNumber.setText( temUser.getMobileNumber() );
+                 
+//               if(temUser.getUrl() !=null && temUser.getUrl() !="")
+//                  {
+//                  String url_val="http://marufnafi.byethost4.com/"+temUser.getUrl();//This is the Url you are getting from JSON parsing
+//                  Log.v("image url","image-url"+url_val);
+//                  new DownloadImageTask(holder.imgProfilePic).execute(url_val);
+//                  }
+            if (holder.imgProfilePic != null && temUser.getUrl() !=null && temUser.getUrl() !="") {
+            	
+            	String url_val="http://marufnafi.byethost4.com/"+temUser.getUrl();//This is the Url you are getting from JSON parsing
+                 Log.v("image url", "image-url"+url_val);
+            	url_val = url_val.replace("%20", " ");
+            	Log.v("url_val","url_val"+url_val);
+            	new ImageDownloaderTask(holder.imgProfilePic).execute("http://lh5.ggpht.com/_hepKlJWopDg/TB-_WXikaYI/AAAAAAAAElI/715k4NvBM4w/s144-c/IMG_0075.JPG");
+//            	new ImageDownloaderTask(holder.imgProfilePic).execute(url_val);
+            	           	
+       		   } 
+                  }
              return vi;
-         }
-          
-         @Override
-         public void onClick(View v) {
-                 Log.v("UserAdapter", "=====Row button clicked=====");
-         }
-          
-         /********* Called when Item click in ListView ************/
-         private class OnItemClickListener  implements OnClickListener{           
-             private int mPosition;
-              
-             OnItemClickListener(int position){
-                  mPosition = position;
-             }
-              
-             @Override
-             public void onClick(View arg0) {
- 
-        
-               MemberListActivity sct = (MemberListActivity)activity;
- 
-              /****  Call  onItemClick Method inside CustomListViewAndroidExample Class ( See Below )****/
- 
-                 sct.onItemClick(mPosition);
-             }               
-         }   
-     }
+             }          
+                    
+            }
